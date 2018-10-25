@@ -116,15 +116,15 @@
 <meta property="og:site_name" content="Wagic.Show">
 <meta property="og:description" content="Catalina包括前一篇文章所讲的所有容器组件，还涉及安全、会话、集群、部署、管理；通过集成了Coyote，能按照协议对请求进行数据读写；另外还包括启动入口、shell等 《Tomcat架构解析》读书笔记二Catalina组件结构图Tomcat本质就是Servlet容器，所以Catalina是Tomcat的核心； 通过Coyote模块提供链接通信，Jasper模块提供JSP引擎，Naming提供">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/_v_images/tomcat组件图_1540432075_12689.png">
-<meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/_v_images/server结构_1540435242_886.png">
-<meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/_v_images/web应用加载时序图_1540436136_22293.png">
-<meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/_v_images/web容器初始化涉及_1540447642_32451.png">
-<meta property="og:updated_time" content="2018-10-25T09:07:48.000Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/tomcat组件图_1540432075_12689.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/server结构_1540435242_886.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/web应用加载时序图_1540436136_22293.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/web容器初始化涉及_1540447642_32451.png">
+<meta property="og:updated_time" content="2018-10-25T09:11:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Catalina实现">
 <meta name="twitter:description" content="Catalina包括前一篇文章所讲的所有容器组件，还涉及安全、会话、集群、部署、管理；通过集成了Coyote，能按照协议对请求进行数据读写；另外还包括启动入口、shell等 《Tomcat架构解析》读书笔记二Catalina组件结构图Tomcat本质就是Servlet容器，所以Catalina是Tomcat的核心； 通过Coyote模块提供链接通信，Jasper模块提供JSP引擎，Naming提供">
-<meta name="twitter:image" content="http://yoursite.com/2018/10/24/Catalina实现/_v_images/tomcat组件图_1540432075_12689.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/10/24/Catalina实现/tomcat组件图_1540432075_12689.png">
 
 
 
@@ -369,7 +369,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-25 17:07:48" itemprop="dateModified" datetime="2018-10-25T17:07:48+08:00">2018-10-25</time>
+                <time title="修改时间：2018-10-25 17:11:00" itemprop="dateModified" datetime="2018-10-25T17:11:00+08:00">2018-10-25</time>
               
             
           </span>
@@ -403,7 +403,7 @@
 
       
         <p>Catalina包括前一篇文章所讲的所有容器组件，还涉及安全、会话、集群、部署、管理；通过集成了Coyote，能按照协议对请求进行数据读写；另外还包括启动入口、shell等</p>
-<h1 id="《Tomcat架构解析》读书笔记二"><a href="#《Tomcat架构解析》读书笔记二" class="headerlink" title="《Tomcat架构解析》读书笔记二"></a>《Tomcat架构解析》读书笔记二</h1><h2 id="Catalina组件结构图"><a href="#Catalina组件结构图" class="headerlink" title="Catalina组件结构图"></a>Catalina组件结构图</h2><p><img src="/2018/10/24/Catalina实现/_v_images/tomcat组件图_1540432075_12689.png" alt="Tomcat组件图"><br>Tomcat本质就是Servlet容器，所以Catalina是Tomcat的核心；</p>
+<h1 id="《Tomcat架构解析》读书笔记二"><a href="#《Tomcat架构解析》读书笔记二" class="headerlink" title="《Tomcat架构解析》读书笔记二"></a>《Tomcat架构解析》读书笔记二</h1><h2 id="Catalina组件结构图"><a href="#Catalina组件结构图" class="headerlink" title="Catalina组件结构图"></a>Catalina组件结构图</h2><p><img src="/2018/10/24/Catalina实现/tomcat组件图_1540432075_12689.png" alt="Tomcat组件图"><br>Tomcat本质就是Servlet容器，所以Catalina是Tomcat的核心；</p>
 <p>通过Coyote模块提供链接通信，Jasper模块提供JSP引擎，Naming提供JNDI服务，Juli提供日志服务。</p>
 <h2 id="Catalina实现"><a href="#Catalina实现" class="headerlink" title="Catalina实现"></a>Catalina实现</h2><h3 id="Digester"><a href="#Digester" class="headerlink" title="Digester"></a>Digester</h3><ol>
 <li>Tomcat使用Digester解析XML（server.xml）配置文件并创建应用服务器。</li>
@@ -415,7 +415,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Digester digester = createStartDigester();</span><br><span class="line">......</span><br><span class="line">inputSource.setByteStream(inputStream);</span><br><span class="line">digester.push(this);</span><br><span class="line">digester.parse(inputSource);</span><br></pre></td></tr></table></figure>
 <p>创建Digester对象后，调用parse方法之前，注意这里push，传入当前对象的引用，Digester会动态为这个对象和首个解析创建的对象建立父子关系（很显然，Catalina类的setServer方法在创建Server对象的时候将被调用，见3.1的源代码）。 </p>
 <h3 id="Server创建"><a href="#Server创建" class="headerlink" title="Server创建"></a>Server创建</h3><ol>
-<li>Server结构图<br><img src="/2018/10/24/Catalina实现/_v_images/server结构_1540435242_886.png" alt="Server结构"></li>
+<li>Server结构图<br><img src="/2018/10/24/Catalina实现/server结构_1540435242_886.png" alt="Server结构"></li>
 <li>解析流程</li>
 </ol>
 <p>2.1 server解析<br>以下代码见于：org.apache.catalina.startup.Catalina类的createStartDigester方法<br>创建Server对象，Server的默认实现是org.apache.catalina.core.StandardServer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// Configure the actions we will be using</span><br><span class="line">digester.addObjectCreate(&quot;Server&quot;,</span><br><span class="line">                         &quot;org.apache.catalina.core.StandardServer&quot;,</span><br><span class="line">                         &quot;className&quot;);</span><br><span class="line">digester.addSetProperties(&quot;Server&quot;);</span><br><span class="line">digester.addSetNext(&quot;Server&quot;,</span><br><span class="line">                    &quot;setServer&quot;,</span><br><span class="line">                    &quot;org.apache.catalina.Server&quot;);</span><br></pre></td></tr></table></figure></p>
@@ -437,8 +437,8 @@
 <blockquote>
 <p>代码见org.apache.catalina.startup.ContextRuleSet<br>Context的配置不止来源于一处，这里解析的是server.xml的配置，多出情况下——由HostConfig自动扫描部署目录，以context.xml文件为基础解析构建<br>通过server.xml构建时，属性create为true就需要创建context，否则仅需要解析子节点即可<br>创建Context实例的同时，添加的生命周期监听器ContextConfig用于详细配置，比如解析Web.xml等</p>
 </blockquote>
-<h3 id="Web应用加载"><a href="#Web应用加载" class="headerlink" title="Web应用加载"></a>Web应用加载</h3><p><img src="/2018/10/24/Catalina实现/_v_images/web应用加载时序图_1540436136_22293.png" alt="Web应用加载时序图"></p>
-<p><img src="/2018/10/24/Catalina实现/_v_images/web容器初始化涉及_1540447642_32451.png" alt="Web容器初始化涉及的类图"></p>
+<h3 id="Web应用加载"><a href="#Web应用加载" class="headerlink" title="Web应用加载"></a>Web应用加载</h3><p><img src="/2018/10/24/Catalina实现/web应用加载时序图_1540436136_22293.png" alt="Web应用加载时序图"></p>
+<p><img src="/2018/10/24/Catalina实现/web容器初始化涉及_1540447642_32451.png" alt="Web容器初始化涉及的类图"></p>
 <h3 id="Web请求处理"><a href="#Web请求处理" class="headerlink" title="Web请求处理"></a>Web请求处理</h3><p>…待完善</p>
 
       
