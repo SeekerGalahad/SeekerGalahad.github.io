@@ -108,22 +108,26 @@
 
 
 
-  <meta name="description" content="Catalina包括前一篇文章所讲的所有容器组件，还涉及安全、会话、集群、部署、管理；通过集成了Coyote，能按照协议对请求进行数据读写；另外还包括启动入口、shell等 《Tomcat架构解析》读书笔记二Catalina组件结构图Tomcat本质就是Servlet容器，所以Catalina是Tomcat的核心； 通过Coyote模块提供链接通信，Jasper模块提供JSP引擎，Naming提供">
+  <meta name="description" content="《Tomcat架构解析》读书笔记二Catalina包括前一篇文章所讲的所有容器组件，还涉及安全、会话、集群、部署、管理；通过集成了Coyote，能按照协议对请求进行数据读写；另外还包括启动入口、shell等 Catalina组件结构图Tomcat本质就是Servlet容器，所以Catalina是Tomcat的核心； 通过Coyote模块提供链接通信，Jasper模块提供JSP引擎，Naming提供">
 <meta name="keywords" content="tomcat,读书笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Catalina实现">
 <meta property="og:url" content="http://yoursite.com/2018/10/24/Catalina实现/index.html">
 <meta property="og:site_name" content="Wagic.Show">
-<meta property="og:description" content="Catalina包括前一篇文章所讲的所有容器组件，还涉及安全、会话、集群、部署、管理；通过集成了Coyote，能按照协议对请求进行数据读写；另外还包括启动入口、shell等 《Tomcat架构解析》读书笔记二Catalina组件结构图Tomcat本质就是Servlet容器，所以Catalina是Tomcat的核心； 通过Coyote模块提供链接通信，Jasper模块提供JSP引擎，Naming提供">
+<meta property="og:description" content="《Tomcat架构解析》读书笔记二Catalina包括前一篇文章所讲的所有容器组件，还涉及安全、会话、集群、部署、管理；通过集成了Coyote，能按照协议对请求进行数据读写；另外还包括启动入口、shell等 Catalina组件结构图Tomcat本质就是Servlet容器，所以Catalina是Tomcat的核心； 通过Coyote模块提供链接通信，Jasper模块提供JSP引擎，Naming提供">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/tomcat组件图_1540432075_12689.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/server结构_1540435242_886.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/web应用加载时序图_1540436136_22293.png">
 <meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/web容器初始化涉及_1540447642_32451.png">
-<meta property="og:updated_time" content="2018-10-27T07:38:04.000Z">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/_v_images/standardco_1541061369_18126.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/_v_images/standardco_1541061398_16731.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/_v_images/standardco_1541061427_27303.png">
+<meta property="og:image" content="http://yoursite.com/2018/10/24/Catalina实现/_v_images/standardco_1541061478_18967.png">
+<meta property="og:updated_time" content="2018-11-01T08:47:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Catalina实现">
-<meta name="twitter:description" content="Catalina包括前一篇文章所讲的所有容器组件，还涉及安全、会话、集群、部署、管理；通过集成了Coyote，能按照协议对请求进行数据读写；另外还包括启动入口、shell等 《Tomcat架构解析》读书笔记二Catalina组件结构图Tomcat本质就是Servlet容器，所以Catalina是Tomcat的核心； 通过Coyote模块提供链接通信，Jasper模块提供JSP引擎，Naming提供">
+<meta name="twitter:description" content="《Tomcat架构解析》读书笔记二Catalina包括前一篇文章所讲的所有容器组件，还涉及安全、会话、集群、部署、管理；通过集成了Coyote，能按照协议对请求进行数据读写；另外还包括启动入口、shell等 Catalina组件结构图Tomcat本质就是Servlet容器，所以Catalina是Tomcat的核心； 通过Coyote模块提供链接通信，Jasper模块提供JSP引擎，Naming提供">
 <meta name="twitter:image" content="http://yoursite.com/2018/10/24/Catalina实现/tomcat组件图_1540432075_12689.png">
 
 
@@ -369,7 +373,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-10-27 15:38:04" itemprop="dateModified" datetime="2018-10-27T15:38:04+08:00">2018-10-27</time>
+                <time title="修改时间：2018-11-01 16:47:42" itemprop="dateModified" datetime="2018-11-01T16:47:42+08:00">2018-11-01</time>
               
             
           </span>
@@ -402,8 +406,8 @@
       
 
       
-        <p>Catalina包括前一篇文章所讲的所有容器组件，还涉及安全、会话、集群、部署、管理；通过集成了Coyote，能按照协议对请求进行数据读写；另外还包括启动入口、shell等</p>
-<h1 id="《Tomcat架构解析》读书笔记二"><a href="#《Tomcat架构解析》读书笔记二" class="headerlink" title="《Tomcat架构解析》读书笔记二"></a>《Tomcat架构解析》读书笔记二</h1><h2 id="Catalina组件结构图"><a href="#Catalina组件结构图" class="headerlink" title="Catalina组件结构图"></a>Catalina组件结构图</h2><p><img src="/2018/10/24/Catalina实现/tomcat组件图_1540432075_12689.png" alt="Tomcat组件图"><br>Tomcat本质就是Servlet容器，所以Catalina是Tomcat的核心；</p>
+        <h1 id="《Tomcat架构解析》读书笔记二"><a href="#《Tomcat架构解析》读书笔记二" class="headerlink" title="《Tomcat架构解析》读书笔记二"></a>《Tomcat架构解析》读书笔记二</h1><p>Catalina包括前一篇文章所讲的所有容器组件，还涉及安全、会话、集群、部署、管理；通过集成了Coyote，能按照协议对请求进行数据读写；另外还包括启动入口、shell等</p>
+<h2 id="Catalina组件结构图"><a href="#Catalina组件结构图" class="headerlink" title="Catalina组件结构图"></a>Catalina组件结构图</h2><p><img src="/2018/10/24/Catalina实现/tomcat组件图_1540432075_12689.png" alt="Tomcat组件图"><br>Tomcat本质就是Servlet容器，所以Catalina是Tomcat的核心；</p>
 <p>通过Coyote模块提供链接通信，Jasper模块提供JSP引擎，Naming提供JNDI服务，Juli提供日志服务。</p>
 <h2 id="Catalina实现"><a href="#Catalina实现" class="headerlink" title="Catalina实现"></a>Catalina实现</h2><h3 id="Digester"><a href="#Digester" class="headerlink" title="Digester"></a>Digester</h3><ol>
 <li>Tomcat使用Digester解析XML（server.xml）配置文件并创建应用服务器。</li>
@@ -415,7 +419,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Digester digester = createStartDigester();</span><br><span class="line">......</span><br><span class="line">inputSource.setByteStream(inputStream);</span><br><span class="line">digester.push(this);</span><br><span class="line">digester.parse(inputSource);</span><br></pre></td></tr></table></figure>
 <p>创建Digester对象后，调用parse方法之前，注意这里push，传入当前对象的引用，Digester会动态为这个对象和首个解析创建的对象建立父子关系（很显然，Catalina类的setServer方法在创建Server对象的时候将被调用，见3.1的源代码）。 </p>
 <h3 id="Server创建"><a href="#Server创建" class="headerlink" title="Server创建"></a>Server创建</h3><ol>
-<li>Server结构图<br><img src="/2018/10/24/Catalina实现/server结构_1540435242_886.png" alt="Server结构"></li>
+<li>Server结构图</li>
+</ol>
+<p><img src="/2018/10/24/Catalina实现/server结构_1540435242_886.png" alt="Server结构"></p>
+<ol start="2">
 <li>解析流程</li>
 </ol>
 <p>2.1 server解析<br>以下代码见于：org.apache.catalina.startup.Catalina类的createStartDigester方法<br>创建Server对象，Server的默认实现是org.apache.catalina.core.StandardServer<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// Configure the actions we will be using</span><br><span class="line">digester.addObjectCreate(&quot;Server&quot;,</span><br><span class="line">                         &quot;org.apache.catalina.core.StandardServer&quot;,</span><br><span class="line">                         &quot;className&quot;);</span><br><span class="line">digester.addSetProperties(&quot;Server&quot;);</span><br><span class="line">digester.addSetNext(&quot;Server&quot;,</span><br><span class="line">                    &quot;setServer&quot;,</span><br><span class="line">                    &quot;org.apache.catalina.Server&quot;);</span><br></pre></td></tr></table></figure></p>
@@ -452,9 +459,14 @@
 </blockquote>
 </li>
 <li><p>StandardContext<br>Host与HostConfig的加载并不包括Web应用初始化及启动工作，这部分由组件Context完成。<br>以下便是Web应用初始化相关的类关系图：<br><img src="/2018/10/24/Catalina实现/web容器初始化涉及_1540447642_32451.png" alt="Web容器初始化涉及的类图"></p>
+<blockquote>
+<p>StandardContext实现类ApplicationContext，仅供Tomcat服务器内部使用，Web应用使用的是其门面类ApplicationContextFacade<br>FilterConfig的实现类为ApplicationFilterConfig，该类也负责filter实例化，FilterMap存储tomcat的filter-mapping配置， StandardContext的servletMapping属性存储servlet-mapping配置，tomcat的filter是责任链模式的典型实现，大致实现步骤如下：\<br>① 要执行的servletset到过滤器链filterChain中。\<br>② 如果没有配置过滤器，返回一个空的、只包含对应servlet的过滤器链filterChain  \<br>③ 如果配置了过滤器，则按Web.xml中配置的顺序，把所有配置的过滤器加入到过滤器链中，分两步： 先判断filter-mapping中配置的dispatcher规则，符合则进入下一步 ，然后判断filter-mapping中配置的url-pattern规则，符合则添加到filterChain \<br>后续步骤将在以后进行详细解释</p>
+</blockquote>
 </li>
-<li><p>ContextConfig</p>
-</li>
+</ol>
+<p>在《Tomcat架构解析》中，详细解释了StandardContext的启动过程：<br><img src="/2018/10/24/Catalina实现/_v_images/standardco_1541061369_18126.png" alt="StandardContext启动过程"><br><img src="/2018/10/24/Catalina实现/_v_images/standardco_1541061398_16731.png" alt="StandardContext启动过程2"><br><img src="/2018/10/24/Catalina实现/_v_images/standardco_1541061427_27303.png" alt="StandardContext启动过程3"><br><img src="/2018/10/24/Catalina实现/_v_images/standardco_1541061478_18967.png" alt="StandardContext启动过程4"></p>
+<ol start="4">
+<li>ContextConfig</li>
 <li>StandardWrapper<h3 id="Web请求处理"><a href="#Web请求处理" class="headerlink" title="Web请求处理"></a>Web请求处理</h3>…待完善</li>
 </ol>
 
@@ -501,6 +513,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/15/Vue-js跳转新标签数据未更新的问题/" rel="prev" title="Vue.js跳转新标签数据未更新的问题">
+                Vue.js跳转新标签数据未更新的问题 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -570,7 +586,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -582,7 +598,7 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
+                  <a href="/index/index.html">
                     
                     
                       
